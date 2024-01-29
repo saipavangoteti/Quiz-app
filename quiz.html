@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <h1>{{ quiz.name }}</h1>
+    <form action="/submit_answer/{{ loop.index0 }}/{{ question_number }}" method="post">
+        <h2>Question {{ question_number + 1 }}</h2>
+        <p>{{ quiz.questions[question_number].question }}</p>
+        {% for option in quiz.questions[question_number].options %}
+            <label>
+                <input type="radio" name="option" value="{{ option }}" required>
+                {{ option }}
+            </label><br>
+        {% endfor %}
+        <br>
+        <button type="submit">Submit Answer</button>
+    </form>
+</body>
+</html>
+
